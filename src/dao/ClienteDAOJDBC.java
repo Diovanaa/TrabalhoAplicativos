@@ -23,7 +23,7 @@ private Connection con;
 	//todos os m�todos
 	
 	public void inserir(Cliente cliente) {
-		String sql = "insert into Cliente (codigo,nome,cpf,rg,endereco,telefone) values(?,?,?,?,?,?)";
+		String sql = "insert into Cliente (nome,cpf,rg,endereco,telefone) values(?,?,?,?,?)";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			

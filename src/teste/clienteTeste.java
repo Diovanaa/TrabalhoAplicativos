@@ -10,8 +10,9 @@ import dao.ClienteDAOJDBC;
 public class clienteTeste {
 	public static void main(String[]args){
 		ClienteDAO clienteDAO = new ClienteDAOJDBC();
+		
 		Cliente cliente = new Cliente();
-		cliente.setCodigo(3);
+		
 		cliente.setNome("Diovana");
 		cliente.setCpf("11111111111");
 		cliente.setRg("6094465");
