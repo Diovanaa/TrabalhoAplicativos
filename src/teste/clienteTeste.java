@@ -17,8 +17,8 @@ public class clienteTeste {
 		cliente.setRg("6094465");
 		cliente.setEndereco("Rua joao lunardi, 146n, bairro alvorada");
 		cliente.setTelefone("33548956");
-		
+
 		clienteDAO.inserir(cliente);
-		
+
 	}
 }

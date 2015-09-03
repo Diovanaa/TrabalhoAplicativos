@@ -20,19 +20,19 @@ private Connection con;
 	}
 	
 	
-	//todos os métodos
+	//todos os mï¿½todos
 	
 	public void inserir(Cliente cliente) {
-		String sql = "insert into Cliente (nome,cpf,rg,endereco,telefone) values(?,?,?,?,?)";
+		String sql = "insert into Cliente (codigo,nome,cpf,rg,endereco,telefone) values(?,?,?,?,?,?)";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, cliente.getNome());
-			pstmt.setString(1, cliente.getCpf());
-			pstmt.setString(1, cliente.getRg());
-			pstmt.setString(1, cliente.getEndereco());
-			pstmt.setString(1, cliente.getTelefone());
-
-
+			pstmt.setString(2, cliente.getCpf());
+			pstmt.setString(3, cliente.getRg());
+			pstmt.setString(4, cliente.getEndereco());
+			pstmt.setString(5, cliente.getTelefone());
+			
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
