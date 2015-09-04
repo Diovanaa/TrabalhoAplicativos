@@ -6,6 +6,7 @@ public class Filme {
 	private Integer codigo;
 	private String nome;
 	private LocalDate ano;
+	private Genero genero;
 	
 	
 	
@@ -27,6 +28,12 @@ public class Filme {
 	}
 	public void setAno(LocalDate ano) {
 		this.ano = ano;
+	}
+	public Genero getGenero() {
+		return genero;
+	}
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 	
 	

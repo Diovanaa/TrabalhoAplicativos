@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,12 @@ import java.util.List;
 
 
 
+
+
+
+
 import model.Filme;
+import model.Genero;
 import conexao.ConexaoUtil2;
 
 public class FilmeDAOJDBC implements FilmeDAO {
@@ -23,11 +29,12 @@ private Connection con;
 	//todos os métodos
 	
 	public void inserir(Filme filme) {
-		String sql = "insert into Filme (nome) values(?)";
+		String sql = "insert into Filme (nome,ano,idGenero) values(?,?,?)";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, filme.getNome());
-			
+			pstmt.setDate(2,Date.valueOf(filme.getAno()));
+			pstmt.setInt(3,filme.getGenero().getCodigo());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -38,11 +45,13 @@ private Connection con;
 
 	 
 	public void alterar(Filme filme) {
-		String sql = "update Filme set nome =?, where codigo = ?";
+		String sql = "update Filme set nome =?, ano =?, idGenero=? where codigo = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, filme.getNome());
-			pstmt.setInt(2, filme.getCodigo());
+			pstmt.setDate(2,Date.valueOf(filme.getAno()));
+			pstmt.setInt(3,filme.getGenero().getCodigo());
+			pstmt.setInt(4, filme.getCodigo());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -66,6 +75,7 @@ private Connection con;
 
 
 	public Filme buscar(Integer id) {
+		GeneroDAO generoDao = new GeneroDAOJDBC();
 		Filme filme = null;
 		
 		String sql = "select  * from Filme where codigo = ?";
@@ -77,6 +87,8 @@ private Connection con;
 				filme = new Filme();
 				filme.setCodigo(rs.getInt("codigo"));
 				filme.setNome(rs.getString("nome"));
+				filme.setGenero(generoDao.buscar(rs.getInt("idGenero")));
+				filme.setAno(rs.getDate("ano").toLocalDate());		
 				}
 			
 			pstmt.executeUpdate();
@@ -93,13 +105,19 @@ private Connection con;
 	public List<Filme> todos() {
          List<Filme> filmes= new ArrayList<>();
         
-		String sql = "select  * from Filme";
+		String sql = "select  * from Filme f"
+				+ "join Genero g on f.idGenero = g.codigo"
+				;
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()){
 				Filme filme = new Filme();
 				filme.setCodigo(rs.getInt("codigo"));
+				Genero genero = new Genero();
+				genero.setCodigo(rs.getInt("idGenero"));
+				genero.setTipo(rs.getString("tipo"));
+				filme.setAno(rs.getDate("data").toLocalDate());
 				filme.setNome(rs.getString("nome"));
 				filmes.add(filme);
 				}
@@ -111,6 +129,8 @@ private Connection con;
 		return filmes;
 
 	}
+	
+
 	
 	
 }
