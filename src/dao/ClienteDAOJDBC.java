@@ -41,16 +41,20 @@ private Connection con;
 		
 	}
 
-	 // parei aqui 
+	 
 	public void alterar(Cliente cliente) {
-		String sql = "update Cliente set nome =?,  where codigo = ?";
+		String sql = "update Cliente set nome =?,set cpf, set rg, set endereco,"
+				+ "set telefone,  where codigo = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, cliente.getNome());
-			pstmt.setString(1, cliente.getCpf());
-			pstmt.setString(1, cliente.getRg());
-			pstmt.setString(1, cliente.getEndereco());
-			pstmt.setString(1, cliente.getTelefone());
+			pstmt.setString(2, cliente.getCpf());
+			pstmt.setString(3, cliente.getRg());
+			pstmt.setString(4, cliente.getEndereco());
+			pstmt.setString(5, cliente.getTelefone());
+			pstmt.setInt(6, cliente.getCodigo());
+			
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -65,6 +69,7 @@ private Connection con;
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, cliente.getCodigo());
+			
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -83,8 +88,12 @@ private Connection con;
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()){
 				cliente = new Cliente();
+				
 				cliente.setCodigo(rs.getInt("codigo"));
 				cliente.setNome(rs.getString("nome"));
+				cliente.setCpf(rs.getString("cpf"));
+				cliente.setRg(rs.getString("rg"));
+				
 				}
 			
 			pstmt.executeUpdate();
@@ -109,6 +118,11 @@ private Connection con;
 				Cliente cliente = new Cliente();
 				cliente.setCodigo(rs.getInt("codigo"));
 				cliente.setNome(rs.getString("nome"));
+				cliente.setCpf(rs.getString("cfp"));
+				cliente.setRg(rs.getString("rg"));
+				cliente.setEndereco(rs.getString("endereco"));
+				cliente.setTelefone(rs.getString("telefone"));
+				
 				clientes.add(cliente);
 				}
 			pstmt.executeUpdate();
