@@ -10,7 +10,7 @@ public class ConexaoUtil2 {
 	static {
 		String endereco = "jdbc:mysql://localhost:3306/locadorajdbc";
 		String usuario = "root";
-		String senha = "123";
+		String senha = "171096";
 		try {
 			connection = DriverManager.getConnection(endereco, usuario, senha);
 		} catch (SQLException e) {
