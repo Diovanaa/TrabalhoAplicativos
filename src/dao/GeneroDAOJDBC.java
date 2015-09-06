@@ -9,16 +9,13 @@ import java.util.List;
 
 import model.Genero;
 import conexao.ConexaoUtil2;
-
+//classe ok
 public class GeneroDAOJDBC implements GeneroDAO {
 private Connection con;
 	
 	public GeneroDAOJDBC(){
 		con = ConexaoUtil2.getCon();
 	}
-	
-	
-	//todos os métodos
 	
 	public void inserir(Genero genero) {
 		String sql = "insert into Genero (tipo) values(?)";
@@ -40,6 +37,7 @@ private Connection con;
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, genero.getTipo());
+			pstmt.setInt(2, genero.getCodigo());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -50,10 +48,11 @@ private Connection con;
 
 	
 	public void excluir(Genero genero) {
-		String sql = "delete from Genero where codigo = ?";
+		String sql = "delete from Genero set tipo=? where codigo = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, genero.getTipo());
+			pstmt.setInt(2, genero.getCodigo());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -73,6 +72,7 @@ private Connection con;
 			while (rs.next()){
 				genero = new Genero();
 				genero.setCodigo(rs.getInt("codigo"));
+				genero.setTipo(rs.getString("tipo"));
 				}
 			
 			pstmt.executeUpdate();

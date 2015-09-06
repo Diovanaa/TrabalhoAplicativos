@@ -7,6 +7,7 @@ public class FilmeLocacao {
 	private Integer codigo;
 	private Double valor;
 	private LocalDate data;
+	private Filme filme;
 	
 	
 	
@@ -29,6 +30,12 @@ public class FilmeLocacao {
 	}
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
+	}
+	public Filme getFilme() {
+		return filme;
+	}
+	public void setFilme(Filme filme) {
+		this.filme = filme;
 	}
 	
 	

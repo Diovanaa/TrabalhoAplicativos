@@ -18,6 +18,7 @@ import model.Filme;
 import model.Genero;
 import conexao.ConexaoUtil2;
 
+//classe ok
 public class FilmeDAOJDBC implements FilmeDAO {
 private Connection con;
 	

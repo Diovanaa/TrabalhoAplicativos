@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Funcionario;
 import conexao.ConexaoUtil2;
-
+//classe ok
 public class FuncionarioDAOJDBC implements FuncionarioDAO{
 private Connection con;
 	
@@ -17,16 +17,16 @@ private Connection con;
 		con = ConexaoUtil2.getCon();
 	}
 	
-	
-	//todos os métodos
-	
 	public void inserir(Funcionario funcionario) {
-		String sql = "insert into Funcionario (nome,cargo) values(?,?)";
+		String sql = "insert into Funcionario (nome,cargo,cpf,rg,endereco,telefone) values(?,?,?,?,?,?)";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, funcionario.getNome());
 			pstmt.setString(2, funcionario.getCargo());
-
+			pstmt.setString(3, funcionario.getCpf());
+			pstmt.setString(4, funcionario.getRg());
+			pstmt.setString(5, funcionario.getEndereco());
+			pstmt.setString(6, funcionario.getTelefone());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -37,11 +37,17 @@ private Connection con;
 
 	 
 	public void alterar(Funcionario funcionario) {
-		String sql = "update Funcionario where codigo = ?";
+		String sql = "update Funcionario set nome=?, cargo=?, cpf=?, rg=?, endereco=?,"
+				+ "telefone=? where codigo = ?";
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, funcionario.getNome());
 			pstmt.setString(2, funcionario.getCargo());
+			pstmt.setString(3, funcionario.getCpf());
+			pstmt.setString(4, funcionario.getRg());
+			pstmt.setString(5, funcionario.getEndereco());
+			pstmt.setString(6, funcionario.getTelefone());
+			pstmt.setInt(7, funcionario.getCodigo());
 			pstmt.executeUpdate();
 			
 		}catch (SQLException e){
@@ -75,6 +81,11 @@ private Connection con;
 			while (rs.next()){
 				funcionario = new Funcionario();
 				funcionario.setCodigo(rs.getInt("codigo"));
+				funcionario.setNome(rs.getString("nome"));
+				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setRg(rs.getString("rg"));
+				funcionario.setEndereco(rs.getString("endereco"));
+				funcionario.setTelefone(rs.getString("telefone"));
 				}
 			
 			pstmt.executeUpdate();
@@ -100,6 +111,10 @@ private Connection con;
 				funcionario.setCodigo(rs.getInt("codigo"));
 				funcionario.setNome(rs.getString("nome"));
 				funcionario.setCargo(rs.getString("cargo"));
+				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setRg(rs.getString("rg"));
+				funcionario.setEndereco(rs.getString("endereco"));
+				funcionario.setTelefone(rs.getString("telefone"));
 
 				funcionarios.add(funcionario);
 				}
