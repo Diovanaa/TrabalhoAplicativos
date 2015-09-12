@@ -4,15 +4,12 @@ import model.Cliente;
 import dao.ClienteDAO;
 import dao.ClienteDAOJDBC;
 
-
-
-
 public class clienteTeste {
-	public static void main(String[]args){
+	public static void main(String[] args) {
 		ClienteDAO clienteDAO = new ClienteDAOJDBC();
-		
+
 		Cliente cliente = new Cliente();
-		
+
 		cliente.setNome("Diovana");
 		cliente.setCpf("11111111111");
 		cliente.setRg("6094465");
@@ -20,6 +17,13 @@ public class clienteTeste {
 		cliente.setTelefone("33548956");
 
 		clienteDAO.inserir(cliente);
-
-	}
+		//clienteDAO.excluir(cliente.getCodigo());
+		
+		
+		        System.out.println("Excluir cliente");
+		        clienteDAO.excluir(cliente);
+		
+		    
+		}
+	
 }
