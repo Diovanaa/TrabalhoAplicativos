@@ -204,7 +204,7 @@ public class ClienteFrame extends javax.swing.JFrame {
 
         jButton6.setText("Alterar");
 
-        jButton7.setText("Editar");
+        jButton7.setText("Excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
