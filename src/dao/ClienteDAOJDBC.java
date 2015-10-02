@@ -108,14 +108,14 @@ public class ClienteDAOJDBC implements ClienteDAO {
 				Cliente cliente = new Cliente();
 				cliente.setCodigo(rs.getInt("codigo"));
 				cliente.setNome(rs.getString("nome"));
-				cliente.setCpf(rs.getString("cfp"));
+				cliente.setCpf(rs.getString("cpf"));
 				cliente.setRg(rs.getString("rg"));
 				cliente.setEndereco(rs.getString("endereco"));
 				cliente.setTelefone(rs.getString("telefone"));
 
 				clientes.add(cliente);
 			}
-			pstmt.executeUpdate();
+			pstmt.execute();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
