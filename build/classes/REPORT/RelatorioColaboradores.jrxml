@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioProdutos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8ac9aad-d3f0-49e5-b853-cd488a828fe6">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<field name="codigo" class="java.lang.Integer"/>
+	<field name="pessoa" class="MODEL.Pessoa"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="rg" class="java.lang.String"/>
+	<field name="dataContratacao" class="java.lang.String"/>
+	<field name="salario" class="java.lang.Float"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="202ecf83-32fc-4b08-9661-1384008bc390" style="Title" x="207" y="0" width="346" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Relatório de Colaboradores]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="dcbd1adc-2288-4132-a8a4-0516c21b3a96" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="767659a7-80b6-4095-9a7f-bcd8ccabe1f6" x="0" y="16" width="53" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="849e81c4-4755-49fe-8f36-8523deed55cf" x="53" y="16" width="154" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[NOME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f81719a6-64ee-4130-b618-b5a0d9514496" x="368" y="16" width="124" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[DATA CONTRATAÇÃO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="712710b0-bd2a-4348-a913-5bb886ff4653" x="292" y="16" width="76" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50c737cc-b7dc-46cd-b05c-4845637b37a4" x="207" y="16" width="85" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8f988e7a-88d3-46fa-8a26-cbbb8ca7bd18" x="492" y="16" width="63" height="20"/>
+				<box topPadding="3" leftPadding="0">
+					<pen lineWidth="0.5" lineStyle="Double"/>
+					<topPen lineWidth="0.5" lineStyle="Double"/>
+					<leftPen lineWidth="0.5" lineStyle="Double"/>
+					<bottomPen lineWidth="0.5" lineStyle="Double"/>
+					<rightPen lineWidth="0.5" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALÁRIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement uuid="2fb46f05-09ff-45b6-9abe-0f2b64e43455" x="492" y="0" width="63" height="14"/>
+				<box topPadding="1" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{salario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c0330f7f-a3d9-4e0c-a35f-178733c74326" x="292" y="0" width="76" height="14"/>
+				<box topPadding="1" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="26be4dd8-05f5-496c-9362-717d3e2ebbed" x="0" y="0" width="53" height="14"/>
+				<box topPadding="1" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b91df637-28e1-4a91-90f6-7d3abd47e14f" x="207" y="0" width="85" height="14"/>
+				<box topPadding="1" rightPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4725e5f1-93dd-4e77-89a1-2c888fc3e23a" x="53" y="0" width="154" height="14"/>
+				<box topPadding="1" leftPadding="2">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pessoa}.getNome()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="442a72d8-a30d-4bda-b133-e62d2637a094" x="368" y="0" width="124" height="14"/>
+				<box topPadding="1" rightPadding="0">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dataContratacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement uuid="3b2513ea-4468-4100-9271-5b717835bc65" positionType="FixRelativeToBottom" x="0" y="0" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="09b80db2-58c7-466e-9550-06b9699c2551" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="fc01a592-0c52-4cc1-8c57-27bec9186d63" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="2e2f7c88-ab6b-4708-82dc-338749c828f2" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
